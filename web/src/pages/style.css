@@ -1,27 +1,101 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+main{
+    background: #f9e5bc9e;
+}
+
 .wrapper {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
-    padding: 0 5%;
+    padding: 0 6%;
     box-sizing: border-box;
 }
 
 .charItem {
-    width: 18%;
+    flex-basis: 18%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     margin-bottom: 20px;
+    background: white;
+    padding: 10px;
 }
-main{
-    background: #eee;
+.title{
+    text-align: center;
+    padding: 40px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
 }
+.title img{
+    width: 120px;
+    margin-right: 20px;
+}
+.description{
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
 
 .charItem h2{
     color: black;
     text-align: center;
+    font-weight: bold;
+    margin-top: 15px;
+    text-transform: uppercase;
 }
 
 .loading {
@@ -32,16 +106,12 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 0.8;
 }
 .loading img {
     width: 200px;
 }
-.actions{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    width: 100%;
-}
+
 .actions button{
     padding: 10px;
     border-radius: 5px;
@@ -54,4 +124,21 @@ main{
 .actions button:hover{
     opacity: 0.7;
     cursor: pointer;
+}
+
+button.next {
+    position: fixed;
+    right: 10px;
+    top: 50%;
+}
+
+button.prev {
+    position: fixed;
+    left: 10px;
+    top: 50%;
+}
+
+.copyright{
+    padding: 10px 0;
+    text-align: center;
 }

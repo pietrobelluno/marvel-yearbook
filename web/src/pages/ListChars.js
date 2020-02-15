@@ -7,8 +7,9 @@ import history from "../history";
 
 function ListChars() {
   const { page } = useParams();
+  const pageInt = parseInt(page);
   const [characters, setCharacters] = useState([]);
-  const [pageParam, setPageParam] = useState(page ? page : 1);
+  const [pageParam, setPageParam] = useState(pageInt ? pageInt : 1);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -46,24 +47,45 @@ function ListChars() {
           <img src={logoMarvel} alt="Logo da Marvel" />
         </div>
       )}
-      <ul className="wrapper">
-        {characters &&
-          !loading &&
-          characters.map(char => (
-            <li className="charItem" key={char.id}>
-              <img src={char.image} alt={char.name} />
-              <h2>{char.name}</h2>
-            </li>
-          ))}
-        <div className="actions">
-          <button
-            onClick={() => prevPage(pageParam <= 1 ? pageParam : pageParam - 1)}
-          >
-            Anterior
-          </button>
-          <button onClick={() => nextPage(pageParam + 1)}>Próximo</button>
+      {characters && !loading && (
+        <div>
+          <h1 className="title">
+            <img src={logoMarvel}></img>YearBook
+          </h1>
+          <p className="description">
+            This website has all the characters that were registered in marvel's
+            api, this is being ordered in alphabetical order, use the side
+            arrows for navigation or jump to a specific page by URL.
+          </p>
+
+          <ul className="wrapper">
+            {characters.map(char => (
+              <li className="charItem" key={char.id}>
+                <img src={char.image} alt={char.name} />
+                <h2>{char.name}</h2>
+              </li>
+            ))}
+            <div className="actions">
+              {pageParam > 1 && (
+                <button
+                  className="prev"
+                  onClick={() => prevPage(pageParam - 1)}
+                >
+                  prev
+                </button>
+              )}
+              <button className="next" onClick={() => nextPage(pageParam + 1)}>
+                next
+              </button>
+            </div>
+          </ul>
+
+          <div className="copyright">
+            &copy;2020 Developed by Pietro Belluno Pilau with React.js and
+            Node.js
+          </div>
         </div>
-      </ul>
+      )}
     </main>
   );
 }
