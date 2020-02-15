@@ -2,16 +2,24 @@ import React, { useState, useEffect } from "react";
 import api from "../services/api";
 import "./style.css";
 import logoMarvel from "../images/marvel-logo.svg";
+import { useParams } from "react-router-dom";
 
-function App() {
+function ListChars() {
+  const { page } = useParams();
   const [characters, setCharacters] = useState([]);
   useEffect(() => {
     async function loadCharacters() {
-      const response = await api.get("characters");
-      setCharacters(response.data.characters);
+      const params = `page/${page ? page : 1}`;
+      const res = await api.get(`/${params}`);
+      setCharacters(res.data.characters);
     }
     loadCharacters();
   }, []);
+
+  async function nextPage() {
+    const res = await api.get(`/page/2`);
+    setCharacters(res.data.characters);
+  }
   return (
     <main>
       {characters.length === 0 && (
@@ -19,21 +27,21 @@ function App() {
           <img src={logoMarvel} alt="Logo da Marvel" />
         </div>
       )}
-      <div className="wrapper">
+      <ul className="wrapper">
         {characters &&
           characters.map(char => (
-            <div className="charItem" key={char.id}>
+            <li className="charItem" key={char.id}>
               <img src={char.image} alt={char.name} />
               <h2>{char.name}</h2>
-            </div>
+            </li>
           ))}
         <div className="actions">
           <button>Anterior</button>
-          <button>Próximo</button>
+          <button onClick={() => nextPage()}>Próximo</button>
         </div>
-      </div>
+      </ul>
     </main>
   );
 }
 
-export default App;
+export default ListChars;
