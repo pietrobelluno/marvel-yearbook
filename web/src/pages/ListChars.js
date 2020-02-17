@@ -52,7 +52,7 @@ function ListChars() {
       {characters && !loading && (
         <div>
           <h1 className="title">
-            <img src={logoMarvel}></img>YearBook
+            <img src={logoMarvel} alt="Logo da Marvel"></img>YearBook
           </h1>
           <p className="description">
             This website has all {total} characters that were registered in
