@@ -28,8 +28,12 @@ app.get("/page/:page", async (req, res) => {
     };
     characters.push(obj);
   });
+  const apiResults = {
+    total: apiResponse.data.data.total,
+    characters
+  };
   res.setHeader("Access-Control-Allow-Origin", "*");
-  return res.json({ characters });
+  return res.json({ apiResults });
 });
 
 app.listen(3333);
