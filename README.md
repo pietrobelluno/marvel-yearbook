@@ -1,0 +1,1 @@
+To run this application you need to open the web folder and run the command "yarn" and after that "yarn start" or if you have docker you can run the command "docker-compose up"
