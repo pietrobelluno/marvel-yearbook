@@ -52,7 +52,7 @@ main{
 
 .wrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: wrap;
     width: 100%;
     padding: 0 6%;
@@ -65,7 +65,7 @@ main{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-bottom: 20px;
+    margin: 0 3px 6px 2px;
     background: white;
     padding: 10px;
 }
@@ -106,7 +106,7 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 .loading img {
     width: 200px;

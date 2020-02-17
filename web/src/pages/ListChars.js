@@ -9,6 +9,7 @@ function ListChars() {
   const { page } = useParams();
   const pageInt = parseInt(page);
   const [characters, setCharacters] = useState([]);
+  const [total, setTotal] = useState(0);
   const [pageParam, setPageParam] = useState(pageInt ? pageInt : 1);
   const [loading, setLoading] = useState(false);
 
@@ -17,7 +18,8 @@ function ListChars() {
       setLoading(true);
       const params = `page/${pageParam ? pageParam : 1}`;
       const res = await api.get(`/${params}`);
-      setCharacters(res.data.characters);
+      setCharacters(res.data.apiResults.characters);
+      setTotal(res.data.apiResults.total);
       setLoading(false);
     }
     loadCharacters();
@@ -27,7 +29,7 @@ function ListChars() {
     setLoading(true);
     history.push(`/page/${page}`);
     const res = await api.get(`/page/${page}`);
-    setCharacters(res.data.characters);
+    setCharacters(res.data.apiResults.characters);
     setPageParam(page);
     setLoading(false);
   }
@@ -36,7 +38,7 @@ function ListChars() {
     setLoading(true);
     history.push(`/page/${page}`);
     const res = await api.get(`/page/${page}`);
-    setCharacters(res.data.characters);
+    setCharacters(res.data.apiResults.characters);
     setPageParam(page);
     setLoading(false);
   }
@@ -53,9 +55,9 @@ function ListChars() {
             <img src={logoMarvel}></img>YearBook
           </h1>
           <p className="description">
-            This website has all the characters that were registered in marvel's
-            api, this is being ordered in alphabetical order, use the side
-            arrows for navigation or jump to a specific page by URL.
+            This website has all {total} characters that were registered in
+            marvel's api, this is being ordered in alphabetical order, use the
+            side arrows for navigation or jump to a specific page by URL.
           </p>
 
           <ul className="wrapper">
@@ -74,9 +76,14 @@ function ListChars() {
                   prev
                 </button>
               )}
-              <button className="next" onClick={() => nextPage(pageParam + 1)}>
-                next
-              </button>
+              {pageParam + 1 <= Math.round(total / 20) && (
+                <button
+                  className="next"
+                  onClick={() => nextPage(pageParam + 1)}
+                >
+                  next
+                </button>
+              )}
             </div>
           </ul>
 
