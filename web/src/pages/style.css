@@ -143,3 +143,12 @@ button.prev {
     text-align: center;
     font-weight: bold;
 }
+
+@media only screen and (max-width: 600px) {
+    .wrapper {
+      padding: 0 3%;
+    }
+    .description{
+        width: 90%;
+    }
+  }
