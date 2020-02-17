@@ -4,6 +4,7 @@ import "./style.css";
 import logoMarvel from "../images/marvel-logo.svg";
 import { useParams } from "react-router-dom";
 import history from "../history";
+import CharItem from "../components/CharItem";
 
 function ListChars() {
   const { page } = useParams();
@@ -62,10 +63,7 @@ function ListChars() {
 
           <ul className="wrapper">
             {characters.map(char => (
-              <li className="charItem" key={char.id}>
-                <img src={char.image} alt={char.name} />
-                <h2>{char.name}</h2>
-              </li>
+              <CharItem character={char}></CharItem>
             ))}
             <div className="actions">
               {pageParam > 1 && (
