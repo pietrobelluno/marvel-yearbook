@@ -17,8 +17,8 @@ Para iniciar a aplicação é necessario:
 - Preview da aplicação
 
 ### Desktop:
-<img src="https://user-images.githubusercontent.com/23633309/78088839-ccb8a700-739b-11ea-98b1-9525dd674bcd.png" width:"400">
+<img src="https://user-images.githubusercontent.com/23633309/78088839-ccb8a700-739b-11ea-98b1-9525dd674bcd.png" width="800" />
 
 ### Mobile:
-<img src="https://user-images.githubusercontent.com/23633309/78088917-0b4e6180-739c-11ea-9b10-faebbb226d44.png" width:"150">
+<img src="https://user-images.githubusercontent.com/23633309/78088917-0b4e6180-739c-11ea-9b10-faebbb226d44.png" width="350" />
 
